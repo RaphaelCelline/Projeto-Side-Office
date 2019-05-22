@@ -1,0 +1,87 @@
+﻿@model SideOffice.Infra.CrossCutting.Identity.Models.RentViewModels.RentViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Criar</h1>
+
+<h4>Aluguel</h4>
+<hr />
+<div class="container">
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Conflito !</h4>
+            <p>Esta sala já possui uma reserva no periodo selecionado !</p>
+            <p>Por favor, escolha um outro periodo.</p>
+            <hr>
+            <p class="mb-0">Conflito de datas</p>
+        </div>
+    }
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group d-none">
+                <label asp-for="Rent_id" class="control-label"></label>
+                <input asp-for="Rent_id" class="form-control" />
+                <span asp-validation-for="Rent_id" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Room_id" class="control-label"></label>
+                <select asp-for="Room_id" class="form-control"
+                        asp-items="@(new SelectList(@ViewBag.Room_id,"Room_id","Name"))"></select>
+                <span asp-validation-for="Room_id" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="User_id" class="control-label"></label>
+                <select asp-for="User_id" class="form-control"
+                        asp-items="@(new SelectList(@ViewBag.User_id,"User_id","Name"))"></select>
+                <span asp-validation-for="User_id" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Start_datetime" class="control-label"></label>
+                <input asp-for="Start_datetime" class="form-control" />
+                <span asp-validation-for="Start_datetime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="End_datetime" class="control-label"></label>
+                <input asp-for="End_datetime" class="form-control" />
+                <span asp-validation-for="End_datetime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" disabled/>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

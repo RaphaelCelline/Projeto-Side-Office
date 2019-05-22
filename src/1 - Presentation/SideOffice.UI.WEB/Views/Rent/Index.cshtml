@@ -1,0 +1,76 @@
+﻿@model IEnumerable<SideOffice.Infra.CrossCutting.Identity.Models.RentViewModels.RentViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Aluguéis</h1>
+<p>
+    <a asp-action="Create">Criar Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="d-none">
+                @Html.DisplayNameFor(model => model.Rent_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Room_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Start_datetime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.End_datetime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="d-none">
+                @Html.DisplayFor(modelItem => item.Rent_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Start_datetime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.End_datetime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Rent_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Rent_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Rent_id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
