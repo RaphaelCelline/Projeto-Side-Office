@@ -1,0 +1,11 @@
+Para inicializar o projeto, crie um novo banco de dados e execute o script dentro da pasta 
+"sql", para construir todas as tabelas necessárias. Após criar gere uma string de conexão do
+respectivo banco, e insira na classe de contexto do repositorio do projeto, localziado em
+5-Infra/5.1-Data/Context/SideOfficeContext.cs.
+
+Após isso, defina "SideOffice.UI.WEB" como seu projeto de inicialição, inicialize a depuração, insira 
+alguns usuários, salas e depois inicie o processo de cadastro de alocação das mesmas. O projeto tem 
+como base o CRUD, e apenas fora disso a regra de negócio solicitada, onde não se pode alugar uma sala,
+se a mesma ja foi aluga no periodo solicitado. Também é possivél acessar as funcionalidades por uma
+API de Serviço, por integração externa, para isso basta inicializar o projeto como "SideOffice.Service.API"
+e chamar os end-points via HTTP pelo PostMan, ou programa de seu gosto.
